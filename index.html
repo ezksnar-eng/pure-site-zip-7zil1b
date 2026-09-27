@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <title>بيور ZIP</title>
+    <meta name="description" content="بشكل سريعZIP بيور يسهل عليك عملية">
+    <link rel="canonical" href="https://ezksnar-eng.github.io/pure-site-zip-7zil1b/">
+    <meta property="og:title" content="بيور ZIP">
+    <meta property="og:description" content="بشكل سريعZIP بيور يسهل عليك عملية">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ezksnar-eng.github.io/pure-site-zip-7zil1b/">
+    <meta name="robots" content="index, follow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --white: #ffffff;
+            --grid-line: #f6cfe4;
+            --hot-pink: #ff3d8b;
+            --deep-pink: #c81466;
+            --magenta: #9d0a52;
+            --pale-pink: #ffe1ef;
+            --ink: #4a0b2c;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; user-select: none; }
+        html, body { min-height: 100vh; }
+
+        body {
+            background-color: #fff;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 38px, var(--grid-line) 38px, var(--grid-line) 39px),
+                repeating-linear-gradient(-45deg, transparent, transparent 38px, var(--grid-line) 39px);
+            color: var(--ink);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .shard { position: fixed; pointer-events: none; z-index: 0; opacity: 0.9; }
+        .shard-1 { top: -60px; left: -40px; width: 260px; height: 260px; background: var(--hot-pink); clip-path: polygon(0 0, 70% 0, 100% 40%, 55% 100%, 0 70%); opacity: 0.85; animation: floatShard1 8s infinite alternate ease-in-out; }
+        .shard-2 { top: 8%; right: -80px; width: 300px; height: 220px; background: var(--deep-pink); clip-path: polygon(100% 0, 100% 100%, 20% 100%, 0 30%, 60% 0); animation: floatShard2 10s infinite alternate ease-in-out; }
+        .shard-3 { bottom: -70px; left: 6%; width: 220px; height: 220px; background: var(--pale-pink); clip-path: polygon(20% 0, 100% 10%, 80% 100%, 0 90%); animation: floatShard1 12s infinite alternate ease-in-out; }
+        .shard-4 { bottom: -40px; right: 4%; width: 240px; height: 180px; background: var(--hot-pink); clip-path: polygon(0 20%, 60% 0, 100% 60%, 40% 100%, 0 80%); opacity: 0.5; animation: floatShard2 9s infinite alternate ease-in-out; }
+
+        @keyframes floatShard1 {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(15px) rotate(3deg); }
+        }
+        @keyframes floatShard2 {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-15px) rotate(-3deg); }
+        }
+
+        .mobile-card {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 420px;
+            background: #ffffff;
+            border-radius: 26px;
+            padding: 26px 24px;
+            box-shadow: 0 24px 50px rgba(157, 10, 82, 0.18);
+            border: 3px solid var(--pale-pink);
+            animation: cardAppear 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes cardAppear {
+            0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        header { text-align: center; margin-bottom: 22px; }
+        
+        .logo { 
+            font-size: 3.2rem; 
+            font-weight: 900; 
+            letter-spacing: 2px; 
+            line-height: 1; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 2px;
+            animation: logoPulse 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes logoPulse {
+            0% { filter: drop-shadow(0 0 2px rgba(255, 61, 139, 0.3)); }
+            100% { filter: drop-shadow(0 0 10px rgba(255, 61, 139, 0.6)); }
+        }
+
+        .logo span { display: inline-block; -webkit-text-stroke: 2px var(--magenta); transition: transform 0.3s; }
+        .logo span:hover { transform: translateY(-5px); }
+        .logo .l1 { color: var(--pale-pink); }
+        .logo .l2 { color: var(--hot-pink); transform: translateY(-2px); }
+        .logo .l3 { color: var(--deep-pink); transform: translateY(2px); }
+        .logo .l4 { color: var(--hot-pink); }
+        
+        .logo-eye { 
+            width: 22px; 
+            height: 22px; 
+            border-radius: 50%; 
+            background: radial-gradient(circle at 35% 35%, var(--ink) 0 5px, var(--hot-pink) 6px 12px, transparent 13px); 
+            border: 2px solid var(--magenta); 
+            display: inline-block;
+            animation: eyeBlink 4s infinite;
+        }
+
+        @keyframes eyeBlink {
+            0%, 96%, 100% { transform: scaleY(1); }
+            98% { transform: scaleY(0.1); }
+        }
+
+        .subtitle { font-size: 1.05rem; font-weight: 700; color: var(--deep-pink); margin-top: 4px; animation: fadeIn 1s ease 0.3s forwards; opacity: 0; }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .social-links { display: flex; justify-content: center; gap: 14px; margin-top: 14px; }
+        .social-btn { 
+            display: flex !important; 
+            align-items: center !important; 
+            justify-content: center !important; 
+            width: 56px !important; 
+            height: 56px !important; 
+            background: #ffe1ef !important; 
+            border: 3px solid #ffb3d9 !important; 
+            border-radius: 18px !important; 
+            font-size: 1.8rem !important; 
+            color: #9d0a52 !important; 
+            text-decoration: none !important; 
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s, box-shadow 0.3s !important; 
+        }
+        .social-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(157, 10, 82, 0.2);
+        }
+        .social-btn:active { transform: scale(0.92); }
+
+        .input-group { margin-bottom: 15px; }
+        input[type="text"] { width: 100%; padding: 14px 16px; border: 2px solid var(--pale-pink); border-radius: 14px; outline: none; font-size: 0.95rem; color: var(--ink); background: #fff; text-align: center; font-weight: 700; transition: border-color 0.3s, box-shadow 0.3s; }
+        input[type="text"]:focus { border-color: var(--hot-pink); box-shadow: 0 0 10px rgba(255, 61, 139, 0.2); }
+
+        .toggle-group { background: var(--pale-pink); padding: 12px 16px; border-radius: 16px; margin-bottom: 18px; border: 1px solid #ffc3e0; transition: transform 0.2s; }
+        .toggle-group:hover { transform: scale(1.01); }
+        .toggle-item { display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: var(--magenta); }
+
+        .switch { position: relative; display: inline-block; width: 46px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #f3b8d3; transition: .3s; border-radius: 24px; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--hot-pink); }
+        input:checked + .slider:before { transform: translateX(22px); }
+
+        .drop-zone { border: 2.5px dashed var(--hot-pink); background: #fff8fb; border-radius: 18px; padding: 25px 15px; text-align: center; cursor: pointer; margin-bottom: 18px; transition: background 0.3s, transform 0.3s, border-color 0.3s; }
+        .drop-zone:hover { background: #ffeef6; transform: scale(1.02); border-color: var(--deep-pink); }
+        .drop-icon { font-size: 2.2rem; transition: transform 0.3s; }
+        .drop-zone:hover .drop-icon { transform: translateY(-5px); }
+        .drop-text { font-size: 0.95rem; font-weight: 700; color: var(--magenta); margin-top: 4px; }
+        .drop-subtext { font-size: 0.75rem; color: var(--deep-pink); opacity: 0.8; }
+
+        .preview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-height: 160px; overflow-y: auto; margin-bottom: 18px; }
+        .preview-item { position: relative; width: 100%; height: 75px; border-radius: 10px; overflow: hidden; border: 2px solid var(--pale-pink); animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .preview-item img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+        .preview-item .remove-btn { position: absolute; top: 2px; right: 2px; background: rgba(157, 10, 82, 0.85); color: white; border: none; width: 18px; height: 18px; border-radius: 50%; font-size: 10px; cursor: pointer; transition: transform 0.2s; z-index: 2; }
+        .preview-item .remove-btn:hover { transform: scale(1.2); }
+        .preview-item .order-badge { position: absolute; bottom: 2px; left: 2px; background: rgba(74, 11, 44, 0.75); color: #fff; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 8px; z-index: 2; }
+        .preview-item { cursor: grab; }
+        .preview-item.dragging { opacity: 0.35; }
+        .preview-item.drag-over { outline: 3px solid var(--hot-pink); outline-offset: -3px; }
+
+        .stats-bar { background: var(--pale-pink); padding: 10px; border-radius: 12px; text-align: center; font-size: 0.85rem; font-weight: 700; color: var(--magenta); margin-bottom: 16px; }
+
+        .btn-submit { width: 100%; background: linear-gradient(135deg, var(--hot-pink) 0%, var(--magenta) 100%); color: white; border: none; padding: 16px; border-radius: 16px; font-size: 1.1rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-submit:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 61, 139, 0.4); }
+        .btn-submit:active:not(:disabled) { transform: scale(0.98); }
+        .btn-submit:disabled { background: #d8c1cd; cursor: not-allowed; }
+
+        .progress-bar { width: 100%; height: 10px; background: var(--pale-pink); border-radius: 5px; margin-top: 12px; overflow: hidden; display: none; }
+        .progress-fill { height: 100%; width: 0%; background: var(--hot-pink); transition: width 0.1s; }
+    </style>
+</head>
+<body>
+
+<div class="shard shard-1"></div><div class="shard shard-2"></div>
+<div class="shard shard-3"></div><div class="shard shard-4"></div>
+
+<div class="mobile-card">
+    <header>
+        <div class="logo"><span class="l1">P</span><span class="l2">U</span><span class="logo-eye"></span><span class="l3">R</span><span class="l4">E</span></div>
+        <div class="subtitle">أداة تجميع وتجهيز الفصول</div>
+        
+        <div class="social-links">
+            <a href="https://tiktok.com" target="_blank" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://discord.gg" target="_blank" class="social-btn"><i class="fa-brands fa-discord"></i></a>
+        </div>
+    </header>
+
+    <div class="input-group">
+        <input type="text" id="zipName" placeholder="اسم ملف الـ ZIP (مثلاً: Ch_01_PURE)">
+    </div>
+
+    <div class="toggle-group">
+        <div class="toggle-item">
+            <span>تسمية تسلسلية (001, 002...)</span>
+            <label class="switch">
+                <input type="checkbox" id="renameFiles" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+        <div class="drop-icon">📂</div>
+        <div class="drop-text" id="dropText">اضغط هنا لاختيار صفحات الفصل</div>
+        <div class="drop-subtext">اختر الصور دفعة واحدة</div>
+        <input type="file" id="fileInput" multiple accept="image/*" style="display: none;" onchange="handleFiles(this.files)">
+    </div>
+
+    <div class="preview-grid" id="previewGrid"></div>
+    <div class="stats-bar" id="statsBar">عدد الصور: 0 | الحجم: ~0MB</div>
+
+    <button class="btn-submit" id="submitBtn" onclick="processAndZipStable()">
+        <span>توليد وتنزيل ملف ZIP</span>
+        <span>💖</span>
+    </button>
+
+    <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<script>
+    // مصفوفة لتخزين بيانات الصور مسبقاً بالذاكرة لمنع مشاكل صلاحيات الموبايل
+    let loadedFiles = [];
+
+    async function handleFiles(files) {
+        const dropText = document.getElementById('dropText');
+        dropText.innerText = "جاري تحميل الصور...";
+        
+        // ما نرتب حسب رقم بالاسم -- نحافظ على نفس ترتيب الاختيار/الرفع تبع المستخدم
+        const newFiles = Array.from(files).filter(f => f.type.startsWith('image/'));
+
+        for (let file of newFiles) {
+            try {
+                // قراءة قوية ومباشرة للملف للذاكرة الحية
+                const buffer = await file.arrayBuffer();
+                const blob = new Blob([buffer], { type: file.type });
+                const url = URL.createObjectURL(blob);
+                
+                loadedFiles.push({
+                    name: file.name,
+                    ext: file.name.split('.').pop() || 'png',
+                    size: file.size,
+                    data: new Uint8Array(buffer),
+                    url: url
+                });
+            } catch (e) {
+                console.error("خطأ بملف:", file.name, e);
+            }
+        }
+
+        dropText.innerText = "اضغط هنا لاختيار المزيد من الصفحات";
+        updateUI();
+    }
+
+    function updateUI() {
+        const previewGrid = document.getElementById('previewGrid');
+        previewGrid.innerHTML = '';
+        let totalSize = 0;
+
+        loadedFiles.forEach((fileObj, index) => {
+            totalSize += fileObj.size;
+            const item = document.createElement('div');
+            item.className = 'preview-item';
+            item.draggable = true;
+            item.dataset.index = index;
+
+            const img = document.createElement('img');
+            img.src = fileObj.url;
+
+            const badge = document.createElement('span');
+            badge.className = 'order-badge';
+            badge.innerText = index + 1;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'remove-btn';
+            removeBtn.innerText = '✕';
+            removeBtn.onclick = (e) => {
+                e.stopPropagation();
+                URL.revokeObjectURL(loadedFiles[index].url);
+                loadedFiles.splice(index, 1);
+                updateUI();
+            };
+
+            // سحب وإفلات لإعادة ترتيب الصور يدوياً -- مكان ما تحطها الصورة تضل هناك
+            item.addEventListener('dragstart', (e) => {
+                item.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', index);
+            });
+            item.addEventListener('dragend', () => item.classList.remove('dragging'));
+            item.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                item.classList.add('drag-over');
+            });
+            item.addEventListener('dragleave', () => item.classList.remove('drag-over'));
+            item.addEventListener('drop', (e) => {
+                e.preventDefault();
+                item.classList.remove('drag-over');
+                const fromIndex = parseInt(e.dataTransfer.getData('text/plain'), 10);
+                const toIndex = index;
+                if (fromIndex === toIndex || isNaN(fromIndex)) return;
+                const [moved] = loadedFiles.splice(fromIndex, 1);
+                loadedFiles.splice(toIndex, 0, moved);
+                updateUI();
+            });
+
+            item.appendChild(img);
+            item.appendChild(badge);
+            item.appendChild(removeBtn);
+            previewGrid.appendChild(item);
+        });
+
+        let sizeMB = totalSize / (1024 * 1024);
+        document.getElementById('statsBar').innerText = `عدد الصور: ${loadedFiles.length} | الحجم: ~${isNaN(sizeMB) ? 0 : sizeMB.toFixed(1)}MB`;
+    }
+
+    async function processAndZipStable() {
+        if (loadedFiles.length === 0) return alert('يمعود اختار صور الفصل أول شي!');
+
+        const zipName = document.getElementById('zipName').value.trim() || 'Ch_01_PURE';
+        const shouldRename = document.getElementById('renameFiles').checked;
+        const btn = document.getElementById('submitBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressFill = document.getElementById('progressFill');
+
+        btn.disabled = true;
+        progressBar.style.display = 'block';
+        progressFill.style.width = '10%';
+
+        try {
+            const chunks = {};
+            const total = loadedFiles.length;
+
+            for (let i = 0; i < total; i++) {
+                const item = loadedFiles[i];
+                let fileName = shouldRename ? `${String(i + 1).padStart(3, '0')}.${item.ext}` : item.name;
+                
+                // ربط البيانات المحفوظة مباشرة
+                chunks[fileName] = [item.data, { level: 0 }];
+
+                let percent = Math.round(((i + 1) / total) * 80) + 10;
+                progressFill.style.width = `${percent}%`;
+            }
+
+            // عملية الضغط المباشرة
+            fflate.zip(chunks, { level: 0 }, (err, out) => {
+                if (err) {
+                    alert('حدث خطأ أثناء إنشاء الـ ZIP: ' + err.message);
+                    btn.disabled = false;
+                    progressBar.style.display = 'none';
+                    return;
+                }
+
+                progressFill.style.width = '100%';
+                const blob = new Blob([out], { type: 'application/zip' });
+                const downloadUrl = URL.createObjectURL(blob);
+                
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.download = `${zipName}.zip`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                setTimeout(() => {
+                    URL.revokeObjectURL(downloadUrl);
+                    btn.disabled = false;
+                    progressBar.style.display = 'none';
+                }, 1000);
+            });
+
+        } catch (uploadErr) {
+            alert('خطأ: ' + uploadErr.message);
+            btn.disabled = false;
+            progressBar.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>
